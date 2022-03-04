@@ -23,6 +23,17 @@ public class ProdutoService {
         return repository.save(produto);
     }
 
+    public Produto atualizaProduto(Long id, Produto produto){
+        Produto produtoAtualizado = repository.findById(id).get();
+        produtoAtualizado.setData(produto.getData());
+        produtoAtualizado.setNome(produto.getNome());
+        produtoAtualizado.setDescricao(produto.getDescricao());
+        produtoAtualizado.setValor(produto.getValor());
+        return repository.save(produtoAtualizado);
+    }
 
+    public void deletaProduto(Long id) {
+        repository.deleteById(id);
+    }
 
 }
